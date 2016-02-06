@@ -79,6 +79,7 @@
     <create-main ng-show="ul.selected.showMain"></create-main>
     <create-comparison ng-show="ul.selected.showComparison"></create-comparison>
     <create-global ng-show="ul.selected.showGlobal"></create-global>
+    <div ng-init="ul.updateUsers()"></div>
   </div>
 
     <script src="../node_modules/angular/angular.js"></script>
@@ -151,9 +152,9 @@
           }
           function initializeMaps(){
               initMap();
-              initMapComparisons();
-              initMapGlobal();
-              //startup = false;
+              //initMapComparisons();
+              //initMapGlobal();
+              startup = false;
           }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_SDafWtjPa3-UK7345ERrIZVKEFjSzYc&callback=googleMapsLoaded"

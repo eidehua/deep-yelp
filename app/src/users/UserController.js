@@ -35,7 +35,7 @@
           .loadAllUsers()
           .then( function( users ) {
             self.users    = [].concat(users);
-            self.selected = users[3];
+            self.selected = users[0];
           });
 
 
@@ -65,6 +65,15 @@
       $mdSidenav('left').toggle();
     }
 
+    function updateUsers(){
+      alert("hi")
+    userService
+          .loadAllUsers()
+          .then( function( users ) {
+            self.users    = [].concat(users);
+            self.selected = users[0];
+          });      
+    }
     /**
      * Select the current avatars
      * @param menuId
@@ -73,12 +82,22 @@
       self.selected = angular.isNumber(user) ? $scope.users[user] : user;
       //console.log(self.selected)
       if(self.selected.name == "Head to Head"){
-          /*initMapComparisons();
-          var currCenter = map_compare1.getCenter();
-          google.maps.event.trigger(map_compare1, 'resize');
-          map_compare1.setCenter(currCenter);
-          */
-      }
+          setTimeout(function(){
+            //do what you need here
+                     initMapComparisons();
+   
+          }, 300);
+        }
+        if(self.selected.name == "Global Analytics"){
+          setTimeout(function(){
+          //do what you need here
+                   initMapGlobal();
+ 
+          }, 300);
+        }
+          // var currCenter = map_compare1.getCenter();
+          // google.maps.event.trigger(map_compare1, 'resize');
+          // map_compare1.setCenter(currCenter);
     }
 
     /**
