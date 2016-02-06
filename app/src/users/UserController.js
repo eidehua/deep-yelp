@@ -3,9 +3,9 @@
   angular
        .module('users')
        .controller('UserController', [
-          'userService', '$mdSidenav', '$mdBottomSheet', '$log', '$q',
+          'startService', 'userService', '$mdSidenav', '$mdBottomSheet', '$log', '$scope', '$q',
           UserController
-       ]);
+      ]);
 
   /**
    * Main Controller for the Angular Material Starter App
@@ -14,9 +14,8 @@
    * @param avatarsService
    * @constructor
    */
-  function UserController( userService, $mdSidenav, $mdBottomSheet, $log) {
+  function UserController( startService, userService, $mdSidenav, $mdBottomSheet, $log, $scope) {
     var self = this;
-
     self.selected     = null;
     self.users        = [ ];
     self.selectUser   = selectUser;
@@ -24,18 +23,41 @@
     self.makeContact  = makeContact;
 
     // Load all registered users
-
+    /*
+    startService
+          .loadstart()
+          .then( function( startup ) {
+            //self.users    = [].concat(startup);
+            self.selected = startup[0];
+          });
+*/
     userService
           .loadAllUsers()
           .then( function( users ) {
             self.users    = [].concat(users);
-            self.selected = users[0];
+            self.selected = users[3];
           });
+
 
     // *********************************
     // Internal methods
     // *********************************
 
+    $scope.$on('$viewContentLoaded', function(){
+       //Here your view content is fully loaded !!
+       self.selected = self.users[0];
+
+     });
+    $scope.$watch('ul.selected.showComparison', function(newValue, oldValue) {
+        if (newValue == true && oldValue == false) {
+            // alert("hi");
+            // initMapComparisons();
+            // var currCenter = map_compare1.getCenter();
+            // alert(currCenter)
+            // google.maps.event.trigger(map_compare1, 'resize');
+            // map_compare1.setCenter(currCenter);
+        }
+    });
     /**
      * Hide or Show the 'left' sideNav area
      */
@@ -49,6 +71,14 @@
      */
     function selectUser ( user ) {
       self.selected = angular.isNumber(user) ? $scope.users[user] : user;
+      //console.log(self.selected)
+      if(self.selected.name == "Head to Head"){
+          /*initMapComparisons();
+          var currCenter = map_compare1.getCenter();
+          google.maps.event.trigger(map_compare1, 'resize');
+          map_compare1.setCenter(currCenter);
+          */
+      }
     }
 
     /**
@@ -86,5 +116,4 @@
     }
 
   }
-
 })();
