@@ -72,7 +72,7 @@
           .then( function( users ) {
             self.users    = [].concat(users);
             self.selected = users[0];
-          });      
+          });
     }
     /**
      * Select the current avatars
@@ -85,14 +85,14 @@
           setTimeout(function(){
             //do what you need here
                      initMapComparisons();
-   
+
           }, 300);
         }
         if(self.selected.name == "Global Analytics"){
           setTimeout(function(){
           //do what you need here
-                   initMapGlobal();
- 
+                   //initMapGlobal();
+
           }, 300);
         }
           // var currCenter = map_compare1.getCenter();

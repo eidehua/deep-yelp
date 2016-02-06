@@ -27,9 +27,12 @@
           margin: 0;
           padding: 0;
         }
-        #map, #map_compare1, #map_compare2, #map_global {
+        #map, #map_global {
             height: 400px;
             width: 100%;
+        }
+        #map_compare1, #map_compare2{
+            height:200px;
         }
         #mapContainer{
             height: 400px;
@@ -38,6 +41,18 @@
         .material-icons.md-24 { font-size: 24px; }
         .material-icons.md-36 { font-size: 36px; }
         .material-icons.md-48 { font-size: 48px; }
+        @media (max-width: 600px) {
+            .map-comp1 {  width : 100%;}
+            .map-comp2 { width:100%;}
+
+        }
+        @media(min-width:601px){
+        .map-comp1 {  width:45%;}
+        .map-comp2 { width:45%;}
+        }
+        .cards-comp {display: flex; flex-wrap:wrap;}
+
+
     </style>
 
   </head>
@@ -86,6 +101,7 @@
     <script src="../node_modules/angular-animate/angular-animate.js"></script>
     <script src="../node_modules/angular-aria/angular-aria.js"></script>
     <script type="text/javascript" src="../node_modules/angular-material/angular-material.js"></script>
+    <script src="//cdn.backand.net/backand/dist/1.8.2/backand.min.js"></script>
 
     <script src="./src/users/Users.js"></script>
     <script src="./src/users/UserController.js"></script>
