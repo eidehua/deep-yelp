@@ -12,12 +12,26 @@
     <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="assets/app.css"/>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
     <style type="text/css">
         /**
          * Hide when Angular is not yet loaded and initialized
          */
         [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
           display: none !important;
+        }
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        #mapContainer{
+            height: 400px;
         }
     </style>
 
@@ -64,7 +78,10 @@
           <md-tooltip>Contact {{ ul.selected.name }}</md-tooltip>
           <md-icon md-svg-icon="share"></md-icon>
         </md-button>
-      </md-content>
+        <div id="mapContainer">
+            <div id="map"></div>
+        </div>
+    </md-content>
 
   </div>
 
@@ -100,5 +117,18 @@
 
     </script>
 
+    <script>
+          var map;
+          function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: -34.397, lng: 150.644},
+              zoom: 8
+            });
+          }
+          $( document ).ready(function() {
+          });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_SDafWtjPa3-UK7345ERrIZVKEFjSzYc&callback=initMap"
+   async defer></script>
   </body>
 </html>
