@@ -1,7 +1,7 @@
 (function(){
 
   angular
-       .module('users')
+       .module('users', ['chart.js'])
        .controller('UserController', [
           'startService', 'userService', '$mdSidenav', '$mdBottomSheet', '$log', '$scope', '$q',
           UserController
