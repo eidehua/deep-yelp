@@ -18,7 +18,7 @@
       {
         name: 'Deep Yelp',
         avatar: 'assessment',
-        content: 'Welcome',
+        content: 'Learn more about your business',
         showMain: true,
         showComparison: false,
         showGlobal: false
