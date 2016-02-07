@@ -27,8 +27,15 @@ function createCard () {
       replace: true,
       scope: true,
       controllerAs: 'card',
-      controller: function () {
-
+      controller: function ($scope) {
+          $scope.line_labels = ["2008", "2009", "2010", "2011", "2012", "2013", "2014"];
+          $scope.line_series = ['Soho Bistro'];
+          $scope.line_data = [
+              [4, 5, 6, 14, 15, 10, 14]
+          ];
+          $scope.onClick = function (points, evt) {
+              console.log(points, evt);
+          };
       },
       link: function ($scope, $element, $attrs) {
 

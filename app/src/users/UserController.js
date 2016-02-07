@@ -91,7 +91,7 @@
         if(self.selected.name == "Global Analytics"){
           setTimeout(function(){
           //do what you need here
-                   //initMapGlobal();
+                   initMapGlobal();
 
           }, 300);
         }
