@@ -199,10 +199,122 @@
           var mapGlobal;
           function initMapGlobal() {
             mapGlobal = new google.maps.Map(document.getElementById("map_global"), {
-              center: {lat: -34.397, lng: 150.644},
-              zoom: 1
+              zoom: 14,
+              center: {lat: 36.11295248, lng: -115.17258850}
             });
+            setMarkers(mapGlobal);
           }
+
+          var beaches = [
+            [4578,"Mon Ami Gabi",36.11295248,-115.17258850],
+            [3984,"Earl of Sandwich",36.11026599,-115.17055330],
+            [3828,"Wicked Spoon",36.10987566,-115.17516380],
+            [3046,"Bacchanal Buffet",36.11585434,-115.17617440],
+            [3007,"Serendipity 3",36.11566972,-115.17331660],
+            [2949,"The Buffet",36.12688722,-115.16559000],
+            [2593,"Bouchon Bistro",36.12229341,-115.17027890],
+            [2583,"The Buffet at Bellagio",36.11316041,-115.17640890],
+            [2537,"Gordon Ramsay BurGR",36.11010840,-115.17233850],
+            [2510,"The Cosmopolitan of Las Vegas",36.10991462,-115.17464250],
+            [2440,"ARIA Hotel & Casino",36.10762100,-115.17704000],
+            [2395,"Hash House A Go Go",36.14466700,-115.23995500],
+            [2302,"XS Nightclub",36.12808322,-115.16467500],
+            [2201,"McCarran International Airport",36.08633800,-115.15112000],
+            [2143,"Mesa Grill",36.12595131,-115.17105100],
+            [2127,"Luxor Hotel And Casino Las Vegas",36.09558900,-115.17583600],
+            [2110,"Hash House A Go Go",36.11788299,-115.17124450],
+            [2105,"Secret Pizza",36.11151943,-115.17484960],
+            [2079,"The Venetian Resort Hotel Casino",36.12118900,-115.16965700],
+            [2063,"Lotus of Siam",36.14356626,-115.14282620],
+            [3984,"Earl of Sandwich",36.11026599,-115.17055330,4.5],
+[1397,"Cirque du Soleil - The Beatles LOVE",36.12132357,-115.17495630,4.5],
+[1352,"Firefly",36.11855220,-115.15469530,4.5],
+[1241,"Four Peaks Brewing Co",33.41956800,-111.91609700,4.5],
+[1223,"Tacos El Gordo",36.13177810,-115.16501910,4.5],
+[1071,"Cirque du Soleil - O",36.11302900,-115.17652400,4.5],
+[1065,"Mr. Mama's",36.08877400,-115.20733800,4.5],
+[1063,"Oyster Bar",36.14290352,-115.17461850,4.5],
+[1033,"Cornish Pasty Company",33.42272800,-111.95149400,4.5],
+[1022,"Egg & I",36.14439570,-115.20163730,4.5],
+[902,"KoMex Fusion",36.17993900,-115.20641700,4.5],
+[900,"Absinthe",36.11396452,-115.17434770,4.5],
+[885,"Del Frisco's Double Eagle Steak House",36.11806780,-115.15527880,4.5],
+[827,"Fountains of Bellagio",36.11302780,-115.17394930,4.5],
+[811,"Rollin Smoke Barbeque",36.13197900,-115.17711400,4.5],
+[791,"Raku",36.12643660,-115.20954610,4.5],
+[732,"Mastro's Ocean Club",36.10792411,-115.17405510,4.5],
+[702,"L'Atelier de Joel Robuchon",36.10259007,-115.17054140,4.5],
+[700,"Soho Japanese Restaurant",36.05524380,-115.22587020,4.5],
+[700,"Green",33.45378690,-111.92716600,4.5],
+[679,"Pinball Hall Of Fame",36.10133940,-115.13056180,4.5],
+[668,"DW Bistro",36.07711230,-115.29829500,4.5],
+[603,"Pizza Rock",36.17183030,-115.14200690,4.5],
+[597,"Joel Robuchon",36.10339900,-115.16772500,4.5],
+[577,"Settebello Pizzeria Napoletana",36.02210400,-115.08383900,4.5],
+[573,"Island Flavor",36.04181594,-115.27817250,4.5],
+[565,"Lawry's The Prime Rib",36.11516170,-115.15979030,4.5],
+[545,"SkinnyFATS",36.07585711,-115.18163330,4.5],
+[543,"Viva Las Arepas",36.15126861,-115.15254550,4.5],
+[535,"Tacos El Gordo",36.15845700,-115.12652200,4.5],
+[532,"Picasso",36.11199000,-115.17700100,4.5],
+[523,"Fat Tuesday",36.10262100,-115.17156400,4.5],
+[515,"Baguette Cafe",36.06685930,-115.27312570,4.5],
+[511,"Frankie's Tiki Room",36.15916840,-115.16463720,4.5],
+[508,"Fogo de Chão Brazilian Steakhouse",36.11474547,-115.15715720,4.5],
+[497,"I Love Sushi",35.99123700,-115.10264100,4.5],
+[485,"Mount Everest India's Cuisine",36.14395500,-115.18981800,4.5],
+[485,"Egg Works",36.07242100,-115.11687000,4.5],
+[484,"Crêpe Expectations",36.01646100,-115.11711670,4.5],
+[481,"Sunrise Coffee",36.07194640,-115.10679830,4.5],
+[480,"JABBAWOCKEEZ",36.10433290,-115.17601000,4.5],
+[476,"Ronald's Donuts",36.12656320,-115.20422270,4.5],
+[467,"Island Style",36.14402090,-115.19386610,4.5],
+[462,"Strip N Dip Chicken Strips",36.16187640,-115.24536170,4.5],
+[460,"Yonaka Modern Japanese",36.11493500,-115.20973700,4.5],
+[455,"Firefly on Paradise",36.11997030,-115.15459920,4.5],
+[449,"Buldogis",36.14708350,-115.29829930,4.5],
+[440,"Haji-Baba",33.41427310,-111.91345090,4.5],
+[424,"Double Down Saloon",36.10550006,-115.14998090,4.5],
+[414,"Pan Asian",36.13495600,-115.27845800,4.5],
+
+          ];
+
+
+          function setMarkers(map) {
+              // Adds markers to the map.
+
+              // Marker sizes are expressed as a Size of X,Y where the origin of the image
+              // (0,0) is located in the top left of the image.
+
+              // Origins, anchor positions and coordinates of the marker increase in the X
+              // direction to the right and in the Y direction down.
+             
+              // Shapes define the clickable region of the icon. The type defines an HTML
+              // <area> element 'poly' which traces out a polygon as a series of X,Y points.
+              // The final coordinate closes the poly by connecting to the first coordinate.
+              var shape = {
+                coords: [1, 1, 1, 20, 18, 20, 18, 1],
+                type: 'poly'
+              };
+              for (var i = 0; i < beaches.length; i++) {
+                var beach = beaches[i];
+                var image = {
+                  url:"http://www.clker.com/cliparts/T/G/b/7/r/A/red-dot-md.png",
+                };
+
+                sizelength=3/414*beach[0];
+                image.scaledSize=new google.maps.Size(sizelength,sizelength)
+                var marker = new google.maps.Marker({
+                  position: {lat: beach[2], lng: beach[3]},
+                  map: map,
+                  icon: image,
+                  shape: shape,
+                  title: beach[1]
+                });
+              }
+            }
+
+
           var startup = true;
           $( document ).ready(function() {
           });
