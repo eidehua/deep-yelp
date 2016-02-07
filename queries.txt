@@ -1,0 +1,5 @@
+Queries:
+SELECT review_count, name, latitude, longitude, stars FROM world.data
+where stars > 4
+order by review_count DESC
+Limit 20;
